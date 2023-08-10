@@ -2,13 +2,19 @@
 
 const express = require('express');
 const path = require('path')
+const cron = require('node-cron');
 const PORT = process.env.PORT || 8080
 const HOST = process.env.HOST
 
 // App
 const app = express();
+
+cron.schedule('*/10 * * * * *', () => {
+  console.log('fecha :', new Date());
+});
+
 app.get('/', (req, res) => {
-  res.send('Hello World - NodeJS is running on Qoddi!');
+  res.send('aplicacion base');
 });
 
 app.listen(PORT, HOST);
